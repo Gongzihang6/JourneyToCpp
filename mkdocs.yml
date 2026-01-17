@@ -1,0 +1,122 @@
+# mkdocs.yml
+site_name: C++学习之旅
+site_url: https://github.com/Gongzihang6/JourneyToCpp/
+site_author: Gongzihang6
+
+# 主题设置
+theme:
+    name: material
+    custom_dir: overrides # 告诉 mkdocs 去这里找自定义模板
+    language: zh # 中文界面
+    features:
+        - toc.follow    # 支持typora中的顶部[toc]目录
+        - navigation.tabs # 顶部导航栏
+        - navigation.sections # 侧边栏分组
+        - navigation.expand # 默认展开侧边栏
+        - navigation.top # 返回顶部按钮
+        - search.suggest # 搜索建议
+        - search.highlight # 搜索高亮
+    palette:
+        # 浅色模式配置
+        - scheme: default
+          primary: grey # 主色调
+          accent: purple
+          toggle:
+              icon: material/weather-sunny
+              name: Switch to dark mode
+        # 深色模式配置
+        - scheme: slate
+          primary: grey
+          accent: lime
+          toggle:
+              icon: material/weather-night
+              name: Switch to light mode
+
+# 必要的扩展 (支持数学公式和更丰富的 Markdown 语法)
+markdown_extensions:
+    - toc:
+          permalink: true  # 可选：为标题添加锚点链接
+    - pymdownx.mark     # 支持markdown的==高亮
+    - abbr
+    - attr_list
+    - admonition
+    - def_list
+    - footnotes
+    - md_in_html
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.tabbed: # <--- 之前漏掉了这个关键配置！
+          alternate_style: true # 开启现代化样式
+    - pymdownx.highlight:
+          linenums: true
+          linenums_style: pymdownx-inline
+          anchor_linenums: true
+          line_spans: __span
+          pygments_lang_class: true
+        #   pygments_style: "monokai"
+        #   pygments_style_dark: "dracula"   # 夜间模式下的代码配色
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.arithmatex:
+          generic: true
+    - sane_lists
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.inlinehilite
+
+# 数学公式渲染引擎 (MathJax)
+extra_javascript:
+    - javascripts/mathjax.js
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 目录结构 (你可以根据自己的笔记慢慢添加)
+nav:
+    - 首页: index.md
+    - 基础语法知识:
+        - Lambda表达式: 基础语法知识/Lambda表达式.md
+
+
+# 右上角展示GitHub仓库
+repo_url: https://github.com/Gongzihang6/JourneyToCpp
+repo_name: Gongzihang6/JourneyToCpp
+edit_uri: edit/master/docs/ # 允许读者点击编辑按钮跳转到源码
+
+# 插件配置
+plugins:
+#     - caption     # 显示图片题注
+    - callouts    # 让mkdocs识别>[!note]语法
+    - search
+    - git-revision-date-localized:
+            type: date
+            enable_creation_date: true
+    - glightbox:
+            touchNavigation: true
+            loop: false
+            effect: zoom # zoom, fade, etc.
+            width: 100%
+            height: auto
+            zoomable: true
+            draggable: true
+extra:
+    # analytics:
+    #   provider: google # ...你的谷歌分析配置
+
+    # 评论系统配置
+    comments:
+        provider: giscus
+        repo: Gongzihang6/JourneyToCpp
+        repo_id: R_kgDOQ7ixiw # 从你截图里提取的 data-repo-id
+        category: General # 从你截图里提取的 data-category
+        category_id: DIC_kwDOQ7ixi84C1EOI # 从你截图里提取的 data-category-id
+        mapping: pathname # 对应 data-mapping="pathname"
+        reactions_enabled: true # 对应 data-reactions-enabled="1"
+        emit_metadata: false
+        input_position: top # 对应 input-position="top"，评论框在评论列表上方
+        lang: zh-CN # 对应 data-lang="zh-CN"
+        # theme: preferred_color_scheme # 主题会自动跟随网站的日间/夜间模式，不用手动设
+
+# 注册自定义 CSS 文件
+extra_css:
+    - stylesheets/extra.css
+copyright: Copyright &copy; 2025 Gongzihang6
